@@ -2,6 +2,7 @@ const record = document.querySelector('#startbutton')
 const stop = document.querySelector('#stopbutton')
 const running = document.querySelector('#running')
 const { MediaRecorder, Blob } = window
+const {startStream,stopStream} = AVStream
 
 let num=1;
 let flag=true
@@ -19,37 +20,9 @@ if (navigator.mediaDevices.getUserMedia) {
 
   const onSuccess = (stream) => {
     const mediaRecorder = new MediaRecorder(stream)
-    console.log(mediaRecorder)
-
-    const record_and_send = (mediaRecorder) => {
-       console.log(num)
-
-       if(mediaRecorder.state != 'recording')
-        mediaRecorder.start()
-
-       setTimeout(()=> {
-        if(mediaRecorder.state != 'inactive'){
-          mediaRecorder.stop()
-        }
-        }, 3000);
-    }
-
-    const startFunc = (mediaRecorder) => {
-      console.log(mediaRecorder)
-      repeat = setInterval(()=>{record_and_send(mediaRecorder)}, 3000);
-    }
-
-    const stopFunc = () => {
-      clearInterval(repeat)
-    }
 
     record.onclick = () => {
-      if(mediaRecorder.state != 'recording')
-        mediaRecorder.start(3000)
-      setTimeout(()=> {
-        if(mediaRecorder.state != 'inactive')
-          mediaRecorder.stop()}, 3000);
-      startFunc(mediaRecorder)
+      startStream(mediaRecorder,1000)
       console.log(mediaRecorder.state)
       console.log('recorder started')
       running.style.display = ""
@@ -59,7 +32,7 @@ if (navigator.mediaDevices.getUserMedia) {
     }
 
     stop.onclick = () => {
-      stopFunc()
+      stopStream()
       console.log(mediaRecorder.state)
       console.log('recorder stopped')
       running.style.display = "none"
@@ -70,7 +43,6 @@ if (navigator.mediaDevices.getUserMedia) {
 
     mediaRecorder.onstop = () => {
       console.log('data available after MediaRecorder.stop() called.')
-      console.log('recorder stopped')
       const blob = new Blob(chunks, { 'type' : 'audio/wav' })
       const fd = new FormData();
       fd.append('fname', num+'.wav');

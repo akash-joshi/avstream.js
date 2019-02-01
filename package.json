@@ -1,0 +1,20 @@
+{
+  "name": "avstream.js",
+  "version": "1.0.0",
+  "description": "JavaScript library using a MediaRecorder API to stream audio or video files to server.",
+  "main": "avstream.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akash-joshi/avstream.js.git"
+  },
+  "keywords": [],
+  "author": "Akash Joshi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/akash-joshi/avstream.js/issues"
+  },
+  "homepage": "https://github.com/akash-joshi/avstream.js#readme"
+}
