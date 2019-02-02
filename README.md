@@ -1,6 +1,3 @@
----
-head: 'Audio-Video-Stream.js'
----
 # Audio-Video-Stream.js
 
 <div align="center">
