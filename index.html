@@ -1,98 +1,81 @@
-<head>
-    <html lang="en">
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Audio-Video-Stream.js | Audio-Video-Stream.js</title>
+    <meta name="description" content="">
+    <link rel="icon" href="logo.png">
+  <meta name="theme-color" content="#151515">
+    
+    <link rel="preload" href="/assets/css/0.styles.3ad1c1fa.css" as="style"><link rel="preload" href="/assets/js/app.6aa6e732.js" as="script"><link rel="preload" href="/assets/js/3.20478979.js" as="script"><link rel="prefetch" href="/assets/js/2.99c9e35f.js"><link rel="prefetch" href="/assets/js/4.cda35a58.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.3ad1c1fa.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-navbar no-sidebar"><!----> <div class="sidebar-mask"></div> <div class="sidebar"><!---->  <!----> </div> <div class="page"> <div class="content"><h1 id="audio-video-stream-js"><a href="#audio-video-stream-js" aria-hidden="true" class="header-anchor">#</a> Audio-Video-Stream.js</h1> <div align="center"><div><img src="img.png" alt="AVStrean"></div></div> <a href="https://github.com/akash-joshi/avstream.js"><img src="https://img.shields.io/badge/github-active-green.svg"></a> <p>A small 500 byte JavaScript library leveraging the native MediaRecorder API to allow streaming of audio or video files to server.</p> <p>It works by looping the MediaRecorder every <strong>x</strong> milliseconds, which can be used to generate and stream a file at every loop step.</p> <h2 id="usage"><a href="#usage" aria-hidden="true" class="header-anchor">#</a> Usage</h2> <p>Including script in browser :</p> <pre><code>&lt;script src=&quot;https://unpkg.com/avstream.js/avstream.min.js&quot;&gt;&lt;/script&gt;
+</code></pre> <p>To use functions in your JS file :</p> <pre><code>const { startStream, stopStream } = AVStream    
+</code></pre> <h2 id="functions"><a href="#functions" aria-hidden="true" class="header-anchor">#</a> Functions</h2> <ol><li><code>startStream(mediaRecorder,time)</code></li></ol> <p><em>startStream</em> takes your <strong>mediaRecorder</strong> variable, and <strong>time</strong> in milliseconds. The MediaRecorder is restarted according to the time you provide.</p> <p>This causes <code>mediaRecorder.onStop()</code> to be called every <strong>time</strong> milliseconds. So, you can write your blob creation and server call in that function.</p> <ol start="2"><li><code>stopStream()</code></li></ol> <p><em>stopStream</em> stops the stream.</p> <h2 id="tutorial"><a href="#tutorial" aria-hidden="true" class="header-anchor">#</a> Tutorial</h2> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// Record &amp; Stop buttons of your HTML</span>
+<span class="token keyword">const</span> record <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'#recordbutton'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> stop <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'#stopbutton'</span><span class="token punctuation">)</span>
 
-	<title>codefeathers/up-serve: A cli tool to quickly create and manage nginx server blocks.</title>
-	<meta content="up-serve - A cli tool to quickly create and manage nginx server blocks." property="og:description">
-	<link rel="canonical" href="https://github.com/codefeathers/up-serve" data-pjax-transient="">
-	<meta name="theme-color" content="#1e2327">
-</head>
-<h1 id="audio-video-stream-js">Audio-Video-Stream.js</h1>
-<div align="center">
-	<div>
-		<img src="img.png" alt="AVStrean">
-	</div>
-</div>
+<span class="token comment">// Importing necessary variables</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span> MediaRecorder<span class="token punctuation">,</span> Blob <span class="token punctuation">}</span> <span class="token operator">=</span> window
+<span class="token keyword">const</span> <span class="token punctuation">{</span>startStream<span class="token punctuation">,</span>stopStream<span class="token punctuation">}</span> <span class="token operator">=</span> AVStream
 
-</p>
-<p> A small 500 byte JavaScript library leveraging the native MediaRecorder API to allow streaming of audio or video files to server. </p>
-<p> It works by looping the MediaRecorder every <strong>x</strong> milliseconds, which can be used to generate and stream a file at every loop step.</p>
-<h2 id="usage">Usage</h2>
-<p>Including script in browser :</p>
-<pre><code>&lt;script src=&quot;https://unpkg.com/avstream.js/avstream.min.js&quot;&gt;&lt;/script&gt;
-</code></pre><p>To use functions in your JS file :</p>
-<pre><code>const { startStream, stopStream } = AVStream
-</code></pre><h2 id="functions">Functions</h2>
-<p>1) <code>startStream(mediaRecorder,time)</code> </p>
-<p><em>startStream</em> takes your <strong>mediaRecorder</strong> variable, and <strong>time</strong> in milliseconds. The MediaRecorder is restarted according to the time you provide.</p>
-<p>This causes <code>mediaRecorder.onStop()</code> to be called every <strong>time</strong> milliseconds. So, you can write your blob creation and server call in that function.</p>
-<p>2) <code>stopStream()</code> </p>
-<p><em>stopStream</em> stops the stream.</p>
-<h2 id="tutorial">Tutorial</h2>
-<pre><code class="lang-javascript">// Record &amp; Stop buttons of your HTML
-const record = document.querySelector(&#39;#recordbutton&#39;)
-const stop = document.querySelector(&#39;#stopbutton&#39;)
+<span class="token comment">// Checking if browser allows getUsermedia</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>navigator<span class="token punctuation">.</span>mediaDevices<span class="token punctuation">.</span>getUserMedia<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'getUserMedia supported.'</span><span class="token punctuation">)</span>
 
-// Importing necessary variables
-const { MediaRecorder, Blob } = window
-const {startStream,stopStream} = AVStream
+  <span class="token comment">// Setting constraints for MediaRecorder</span>
+  <span class="token keyword">const</span> constraints <span class="token operator">=</span> <span class="token punctuation">{</span> audio<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> video<span class="token punctuation">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span>
 
-// Checking if browser allows getUsermedia
-if (navigator.mediaDevices.getUserMedia) {
-  console.log(&#39;getUserMedia supported.&#39;)
+  <span class="token comment">// Declare chunks for our blob</span>
+  <span class="token keyword">let</span> chunks <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-  // Setting constraints for MediaRecorder
-  const constraints = { audio: true, video: false }
+  <span class="token keyword">const</span> <span class="token function-variable function">onSuccess</span> <span class="token operator">=</span> <span class="token punctuation">(</span>stream<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
 
-  // Declare chunks for our blob
-  let chunks = [];
+    <span class="token comment">// Creating a MediaRecorder object</span>
+    <span class="token keyword">const</span> mediaRecorder <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MediaRecorder</span><span class="token punctuation">(</span>stream<span class="token punctuation">)</span>
 
-  const onSuccess = (stream) =&gt; {
+    <span class="token comment">// if record button clicked, call startstream </span>
+    <span class="token comment">// with our mediarecorder object and a 1000ms loop</span>
+    record<span class="token punctuation">.</span><span class="token function-variable function">onclick</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token function">startStream</span><span class="token punctuation">(</span>mediaRecorder<span class="token punctuation">,</span><span class="token number">1000</span><span class="token punctuation">)</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>mediaRecorder<span class="token punctuation">.</span>state<span class="token punctuation">)</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'recorder started'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
 
-    // Creating a MediaRecorder object
-    const mediaRecorder = new MediaRecorder(stream)
+    <span class="token comment">// stop stream if stop button clicked</span>
+    stop<span class="token punctuation">.</span><span class="token function-variable function">onclick</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token function">stopStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>mediaRecorder<span class="token punctuation">.</span>state<span class="token punctuation">)</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'recorder stopped'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
 
-    // if record button clicked, call startstream
-    // with our mediarecorder object and a 1000ms loop
-    record.onclick = () =&gt; {
-      startStream(mediaRecorder,1000)
-      console.log(mediaRecorder.state)
-      console.log(&#39;recorder started&#39;)
-    }
+    <span class="token comment">// Blob created and streamed to server</span>
+    <span class="token comment">// Looped according to time we specify</span>
+    mediaRecorder<span class="token punctuation">.</span><span class="token function-variable function">onstop</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'data available after MediaRecorder.stop() called.'</span><span class="token punctuation">)</span>
 
-    // stop stream if stop button clicked
-    stop.onclick = () =&gt; {
-      stopStream()
-      console.log(mediaRecorder.state)
-      console.log(&#39;recorder stopped&#39;)
-    }
+      <span class="token comment">// Create file from chunks</span>
+      <span class="token keyword">const</span> blob <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Blob</span><span class="token punctuation">(</span>chunks<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token string">'type'</span> <span class="token punctuation">:</span> <span class="token string">'audio/wav'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      
+      <span class="token comment">// Write code to send blob to server here</span>
 
-    // Blob created and streamed to server
-    // Looped according to time we specify
-    mediaRecorder.onstop = () =&gt; {
-      console.log(&#39;data available after MediaRecorder.stop() called.&#39;)
+      <span class="token comment">// Clear chunks for new file</span>
+      chunks <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-      // Create file from chunks
-      const blob = new Blob(chunks, { &#39;type&#39; : &#39;audio/wav&#39; })
+    <span class="token comment">// Push chunks when data is available</span>
+    mediaRecorder<span class="token punctuation">.</span><span class="token function-variable function">ondataavailable</span> <span class="token operator">=</span> e <span class="token operator">=&gt;</span> chunks<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
 
-      // Write code to send blob to server here
-
-      // Clear chunks for new file
-      chunks = [];
-    }
-
-    // Push chunks when data is available
-    mediaRecorder.ondataavailable = e =&gt; chunks.push(e.data);
-  }
-
-  // Promise call to start our code
-  navigator.mediaDevices.getUserMedia(constraints).then(onSuccess).catch((err)=&gt;{console.error(err)})
-} else {
-  console.error(&#39;getUserMedia not supported on your browser!&#39;)
-}
-</code></pre>
-<h2 id="license">License</h2>
-<p>The MIT License (MIT)</p>
+  <span class="token comment">// Promise call to start our code</span>
+  navigator<span class="token punctuation">.</span>mediaDevices<span class="token punctuation">.</span><span class="token function">getUserMedia</span><span class="token punctuation">(</span>constraints<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>onSuccess<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'getUserMedia not supported on your browser!'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="license"><a href="#license" aria-hidden="true" class="header-anchor">#</a> License</h2> <p>The MIT License (MIT)</p></div> <div class="page-edit"><!----> <!----></div> <!----> </div> <!----></div></div>
+    <script src="/assets/js/app.6aa6e732.js" defer></script><script src="/assets/js/3.20478979.js" defer></script>
+  </body>
+</html>

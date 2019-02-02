@@ -1,3 +1,6 @@
+---
+head: 'Audio-Video-Stream.js'
+---
 # Audio-Video-Stream.js
 
 <div align="center">
@@ -5,6 +8,10 @@
 		<img src="img.png" alt="AVStrean">
 	</div>
 </div>
+
+<a href="https://github.com/akash-joshi/avstream.js">
+<img src="https://img.shields.io/badge/github-active-green.svg" />
+</a>
 
  A small 500 byte JavaScript library leveraging the native MediaRecorder API to allow streaming of audio or video files to server. 
  
