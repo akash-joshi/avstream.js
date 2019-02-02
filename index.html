@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Audio-Video-Stream.js | Audio-Video-Stream.js</title>
     <meta name="description" content="">
-    <link rel="icon" href="logo.png">
+    <link rel="icon" href="logo.de01bb0e.png">
   <meta name="theme-color" content="#151515">
     
-    <link rel="preload" href="/assets/css/0.styles.3ad1c1fa.css" as="style"><link rel="preload" href="/assets/js/app.6aa6e732.js" as="script"><link rel="preload" href="/assets/js/3.20478979.js" as="script"><link rel="prefetch" href="/assets/js/2.99c9e35f.js"><link rel="prefetch" href="/assets/js/4.cda35a58.js">
-    <link rel="stylesheet" href="/assets/css/0.styles.3ad1c1fa.css">
-  </head>
+    <link rel="preload" href="/app.6aa6e732.6670bd0d.js" as="script"><link rel="preload" href="/3.20478979.2bf0c48c.js" as="script"><link rel="prefetch" href="/2.99c9e35f.449a528a.js"><link rel="prefetch" href="/4.cda35a58.8c898ba6.js">
+    <link rel="stylesheet" href="style.css">
+  <script src="/0.styles.3ad1c1fa.f8dda3f4.js"></script></head>
   <body>
-    <div id="app" data-server-rendered="true"><div class="theme-container no-navbar no-sidebar"><!----> <div class="sidebar-mask"></div> <div class="sidebar"><!---->  <!----> </div> <div class="page"> <div class="content"><h1 id="audio-video-stream-js"><a href="#audio-video-stream-js" aria-hidden="true" class="header-anchor">#</a> Audio-Video-Stream.js</h1> <div align="center"><div><img src="img.png" alt="AVStrean"></div></div> <a href="https://github.com/akash-joshi/avstream.js"><img src="https://img.shields.io/badge/github-active-green.svg"></a> <p>A small 500 byte JavaScript library leveraging the native MediaRecorder API to allow streaming of audio or video files to server.</p> <p>It works by looping the MediaRecorder every <strong>x</strong> milliseconds, which can be used to generate and stream a file at every loop step.</p> <h2 id="usage"><a href="#usage" aria-hidden="true" class="header-anchor">#</a> Usage</h2> <p>Including script in browser :</p> <pre><code>&lt;script src=&quot;https://unpkg.com/avstream.js/avstream.min.js&quot;&gt;&lt;/script&gt;
+    <div id="app" data-server-rendered="true"><div class="theme-container no-navbar no-sidebar"><!----> <div class="sidebar-mask"></div> <div class="sidebar"><!---->  <!----> </div> <div class="page"> <div class="content"><h1 id="audio-video-stream-js"><a href="#audio-video-stream-js" aria-hidden="true" class="header-anchor">#</a> Audio-Video-Stream.js</h1> <div align="center"><div><img src="img.ff8e9d7c.png" alt="AVStrean"></div></div> <a href="https://github.com/akash-joshi/avstream.js"><img src="https://img.shields.io/badge/github-active-green.svg"></a> <p>A small 500 byte JavaScript library leveraging the native MediaRecorder API to allow streaming of audio or video files to server.</p> <p>It works by looping the MediaRecorder every <strong>x</strong> milliseconds, which can be used to generate and stream a file at every loop step.</p> <h2 id="usage"><a href="#usage" aria-hidden="true" class="header-anchor">#</a> Usage</h2> <p>Including script in browser :</p> <pre><code>&lt;script src=&quot;https://unpkg.com/avstream.js/avstream.min.js&quot;&gt;&lt;/script&gt;
 </code></pre> <p>To use functions in your JS file :</p> <pre><code>const { startStream, stopStream } = AVStream    
 </code></pre> <h2 id="functions"><a href="#functions" aria-hidden="true" class="header-anchor">#</a> Functions</h2> <ol><li><code>startStream(mediaRecorder,time)</code></li></ol> <p><em>startStream</em> takes your <strong>mediaRecorder</strong> variable, and <strong>time</strong> in milliseconds. The MediaRecorder is restarted according to the time you provide.</p> <p>This causes <code>mediaRecorder.onStop()</code> to be called every <strong>time</strong> milliseconds. So, you can write your blob creation and server call in that function.</p> <ol start="2"><li><code>stopStream()</code></li></ol> <p><em>stopStream</em> stops the stream.</p> <h2 id="tutorial"><a href="#tutorial" aria-hidden="true" class="header-anchor">#</a> Tutorial</h2> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// Record &amp; Stop buttons of your HTML</span>
 <span class="token keyword">const</span> record <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'#recordbutton'</span><span class="token punctuation">)</span>
@@ -76,6 +76,6 @@
   console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'getUserMedia not supported on your browser!'</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </code></pre></div><h2 id="license"><a href="#license" aria-hidden="true" class="header-anchor">#</a> License</h2> <p>The MIT License (MIT)</p></div> <div class="page-edit"><!----> <!----></div> <!----> </div> <!----></div></div>
-    <script src="/assets/js/app.6aa6e732.js" defer></script><script src="/assets/js/3.20478979.js" defer></script>
+    <script src="/app.6aa6e732.6670bd0d.js" defer=""></script><script src="/3.20478979.2bf0c48c.js" defer=""></script>
   </body>
 </html>
